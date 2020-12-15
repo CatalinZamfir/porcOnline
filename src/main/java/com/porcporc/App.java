@@ -1,10 +1,13 @@
 package com.porcporc;
 
 
+import com.porcporc.config.AppConfig;
+import org.springframework.boot.SpringApplication;
+
 public class App{
     public static void main( String[] args ) {
 
-        System.out.println( "Hello World!" );
+        SpringApplication.run(AppConfig.class);
 
     }
 }
