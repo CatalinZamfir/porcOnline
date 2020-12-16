@@ -5,6 +5,5 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("com.porcporc")
-
 public class AppConfig {
 }

@@ -4,21 +4,6 @@
   `description` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`categories_id`)
 
-  ALTER TABLE `porc_shop`.`product_categories`
-  DROP FOREIGN KEY `product_categories_id`;
-  ALTER TABLE `porc_shop`.`product_categories`
-  ADD CONSTRAINT `product_categories_id`
-    FOREIGN KEY (`product_id`)
-    REFERENCES `porc_shop`.`products` (`products_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE;
-
-
- CREATE TABLE `porc_shop`.`product_categories` (
-    `product_categories_id` INT NOT NULL AUTO_INCREMENT,
-    `product_id` INT NULL,
-    `category_id` INT NULL,
-    PRIMARY KEY (`product_categories_id`));
 
  CREATE TABLE `porc_shop`.`products` (
   `products_id` INT NOT NULL AUTO_INCREMENT,
@@ -39,15 +24,6 @@
     REFERENCES `porc_shop`.`products` (`products_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
-
-  ALTER TABLE `porc_shop`.`product_categories`
-  DROP FOREIGN KEY `categories_product_id`;
-  ALTER TABLE `porc_shop`.`product_categories`
-  ADD CONSTRAINT `categories_product_id`
-    FOREIGN KEY (`category_id`)
-    REFERENCES `porc_shop`.`categories` (`categories_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE;
 
 
  CREATE TABLE `porc_shop`.`order` (

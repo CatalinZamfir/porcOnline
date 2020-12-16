@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PORC | Porc-a-Porter</title>
+</head>
+<body>
+
+<h2>Categories</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr th:each="categories : ${categoriesList}">
+        <td th:text="${categories.getCategoriesId()}"></td>
+        <td th:text="${categories.getName()}"></td>
+        <td th:text="${categories.getDescription()}"></td>
+        <td>
+        <a th:href="@{'/categories/view/' + ${categories.getCategoriesId()}}" th:text="#{edit}"> Edit <a/>
+            <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" th:text="#{delete}"> Delete <a/>
+                <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" th:text="#{edit}"> Edit <a/>
+
+        </td>
+    </tr>
+    </table>
+<a href="categories/add" th:text="#{addCategories}"> Add Categories</a>
+
+</body>
+</html>
