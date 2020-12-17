@@ -1,5 +1,7 @@
 package com.porcporc.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +19,7 @@ public class ProductsEntity {
     private Double price;
     private String description;
     private String image;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
     private Integer stockProduct;
     @ManyToOne
@@ -24,6 +27,7 @@ public class ProductsEntity {
     private ProductsEntity products;
     @OneToOne(mappedBy = "products")
     private ProductOrderEntity productOrder;
+
 
     public Integer getProductsId() {
         return productsId;

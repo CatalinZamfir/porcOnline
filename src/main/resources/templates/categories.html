@@ -13,7 +13,7 @@
         <a th:text="${categories.getName()}"></a>
         <a th:text="${categories.getDescription()}"></a>
 
-        <a th:href="@{'/categories/view/' + ${categories.getCategoriesId()}}" > View <a/>
+        <a th:href="@{'/view-products/' + ${categories.getCategoriesId()}}" > View <a/>
             <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" > Delete <a/>
                 <a th:href="@{'/categories/edit/' + ${categories.getCategoriesId()}}" > Edit <a/>
 

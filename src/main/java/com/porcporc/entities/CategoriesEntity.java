@@ -14,7 +14,7 @@ public class CategoriesEntity {
     private String name;
     private String description;
     @OneToMany(mappedBy = "products")
-    private List<ProductsEntity> products;
+    private List<ProductsEntity> productsList;
 
     public Integer getCategoriesId() {
         return categoriesId;
@@ -40,11 +40,11 @@ public class CategoriesEntity {
         this.description = description;
     }
 
-    public List<ProductsEntity> getProducts() {
-        return products;
+    public List<ProductsEntity> getProductsList() {
+        return productsList;
     }
 
-    public void setProducts(List<ProductsEntity> products) {
-        this.products = products;
+    public void setProducts(List<ProductsEntity> productsList) {
+        this.productsList = productsList;
     }
 }
