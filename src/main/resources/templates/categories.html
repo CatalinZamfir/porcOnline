@@ -7,24 +7,18 @@
 <body>
 
 <h2>Categories</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-    </tr>
-    <tr th:each="categories : ${categoriesList}">
-        <td th:text="${categories.getCategoriesId()}"></td>
-        <td th:text="${categories.getName()}"></td>
-        <td th:text="${categories.getDescription()}"></td>
-        <td>
+<ul>
+    <li th:each="categories : ${categoriesList}">
+        <a th:text="${categories.getCategoriesId()}"></a>
+        <a th:text="${categories.getName()}"></a>
+        <a th:text="${categories.getDescription()}"></a>
+
         <a th:href="@{'/categories/view/' + ${categories.getCategoriesId()}}" > View <a/>
             <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" > Delete <a/>
                 <a th:href="@{'/categories/edit/' + ${categories.getCategoriesId()}}" > Edit <a/>
-        </td>
 
-    </tr>
-    </table>
+    </li>
+</ul>
 <a href="categories/add" > Add Categories</a>
 
 </body>
