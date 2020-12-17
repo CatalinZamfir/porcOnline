@@ -18,14 +18,14 @@
         <td th:text="${categories.getName()}"></td>
         <td th:text="${categories.getDescription()}"></td>
         <td>
-        <a th:href="@{'/categories/view/' + ${categories.getCategoriesId()}}" th:text="#{edit}"> Edit <a/>
-            <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" th:text="#{delete}"> Delete <a/>
-                <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" th:text="#{edit}"> Edit <a/>
-
+        <a th:href="@{'/categories/view/' + ${categories.getCategoriesId()}}" > View <a/>
+            <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" > Delete <a/>
+                <a th:href="@{'/categories/edit/' + ${categories.getCategoriesId()}}" > Edit <a/>
         </td>
+
     </tr>
     </table>
-<a href="categories/add" th:text="#{addCategories}"> Add Categories</a>
+<a href="categories/add" > Add Categories</a>
 
 </body>
 </html>
