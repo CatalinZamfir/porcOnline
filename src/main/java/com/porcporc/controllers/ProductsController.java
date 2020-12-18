@@ -53,12 +53,30 @@ public class ProductsController {
 
 
     @PostMapping("/products/save")
-    public ModelAndView saveProducts (@ModelAttribute ProductsEntity product) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/view-products/" + product.getProductsId());
-        modelAndView.setViewName("products-formular");
-       modelAndView.addObject("products", product);
+    public ModelAndView saveProducts (@Valid @ModelAttribute ProductsEntity product, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/view-products/" + product.getCategoriesId());
+        if(bindingResult.hasErrors()) {
+            modelAndView.setViewName("products-formular");
+            modelAndView.addObject("products", product);
+            return modelAndView;
+        }
        productRepository.save(product);
-       modelAndView.setViewName("redirect:/view-products/" + product.getProductsId());
+        return modelAndView;
+    }
+
+    @GetMapping("/products/edit/{id}")
+    public ModelAndView editProducts (@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("products-formular");
+        ProductsEntity productsEntity = productRepository.findById(id).get();
+        modelAndView.addObject("products", productsEntity);
+        return modelAndView;
+    }
+
+    @GetMapping("/products/delete/{id}")
+    public ModelAndView deleteProducts (@PathVariable Integer id){
+        ProductsEntity productsEntity = productRepository.findById(id).get();
+        ModelAndView modelAndView = new ModelAndView("redirect:/view-products/"+ productsEntity.getProductsId());
+        productRepository.delete(productsEntity);
         return modelAndView;
     }
 

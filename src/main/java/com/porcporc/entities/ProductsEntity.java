@@ -23,11 +23,22 @@ public class ProductsEntity {
     private Date createDate;
     private Integer stockProduct;
     @ManyToOne
-    @JoinColumn(name = "categoriesId")
+    @JoinColumn(name = "categoriesId",insertable = false, updatable = false)
     private ProductsEntity products;
+    private Integer categoriesId;
     @OneToOne(mappedBy = "products")
     private ProductOrderEntity productOrder;
 
+    public ProductsEntity() {
+    }
+
+    public Integer getCategoriesId() {
+        return categoriesId;
+    }
+
+    public void setCategoriesId(Integer categoriesId) {
+        this.categoriesId = categoriesId;
+    }
 
     public Integer getProductsId() {
         return productsId;

@@ -23,6 +23,8 @@ public class OrderEntity {
     @OneToMany(mappedBy = "order")
     private List<ProductOrderEntity> productOrders;
 
+    public OrderEntity() {
+    }
 
     public Integer getOrderId() {
         return orderId;
