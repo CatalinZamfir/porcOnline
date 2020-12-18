@@ -1,5 +1,7 @@
 package com.porcporc.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +20,7 @@ public class UserEntity {
     private String username;
     private String billingAddress;
     private String shippingAddress;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
     private String phone;
     @OneToMany(mappedBy = "user")

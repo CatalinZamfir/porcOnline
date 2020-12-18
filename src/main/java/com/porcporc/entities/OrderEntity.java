@@ -1,5 +1,7 @@
 package com.porcporc.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date orderDate;
     private Boolean processed;
     private String paymentType;

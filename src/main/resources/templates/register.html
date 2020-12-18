@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
+<h1> Register User Form</h1>
+<br>
+
+<form method="post" action="/register" th:object="${user}">
+
+
+    <label for="full_name">Full Name</label>
+    <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" th:field="*{username}" th:readonly="${editMode}">
+    <br>
+
+    <br>
+    <label for="birthDate" >Birth Date</label>
+    <input type="date" id="birthDate" name="birthDate" placeholder="Birth Date" th:field="*{birthDate}">
+    <br>
+
+    <br>
+    <label for="phone">Phone number</label>
+    <input type="text" id="phone" name="phone" placeholder="Enter your phone number" th:field="*{phone}" th:readonly="${editMode}">
+    <br>
+
+    <br>
+    <label for="billingAddress">Billing Address</label>
+    <input type="text" id="billingAddress" name="billingAddress" placeholder="Enter your Billing Address" th:field="*{billingAddress}" th:readonly="${editMode}">
+    <br>
+
+    <br>
+    <label for="shippingAddress">Shipping Address</label>
+    <input type="text" id="shippingAddress" name="shippingAddress" placeholder="Enter your Shipping Address" th:field="*{shippingAddress}" th:readonly="${editMode}">
+    <br>
+
+    <br>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Enter your username" th:field="*{username}" th:readonly="${editMode}">
+    <br>
+
+    <br>
+    <label for="email">E-mail</label>
+    <input type="text" id="email" name="email" placeholder="Enter your email" th:field="*{email}" th:readonly="${editMode}">
+    <br>
+
+    <br>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter your username" th:field="*{password}">
+    <br>
+    <br>
+    <input type="submit" value="Register">
+
+
+
+</form>
+</body>
+</html>
