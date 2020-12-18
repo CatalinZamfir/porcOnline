@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>PORC | Porc-a-Porter</title>
+    <link type="text/css" rel="stylesheet" href="/css/site.css">
 </head>
 <body>
 
-<h2>Categories</h2>
 <ul>
     <li th:each="categories : ${categoriesList}">
         <a th:text="${categories.getCategoriesId()}"></a>

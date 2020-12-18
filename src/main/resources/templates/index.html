@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>PORC | Porc-a-Porter</title>
+    <link type="text/css" rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-<h1> Salut </h1>
+<body>
+<div id="menuNav" class="topnav">
+    <div class="menu">
+        <button class="menuElement">Menu</button>
+        <div class="menu-content">
+            <a th:href="@{'/categories/'}" target="_blank">PRODUSE</a>
+            <br>
+            <a href="#">Contul meu</a>
+            <a href="#">In magazine</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <a class="home" href="/">Home</a>
+    <a class="linkElement" href="#">Search</a>
+    <a class="linkElement" href="#">My Cart</a>
+    <a class="linkElement" href="#">My Account</a>
+
+</div>
+
 
 </body>
 </html>
