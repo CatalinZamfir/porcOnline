@@ -27,4 +27,16 @@ public class MainController {
         return modelAndView;
     }
 
+    @GetMapping("/in-magazine")
+    public ModelAndView getMag(){
+        ModelAndView modelAndView = new ModelAndView("in-mag");
+        return modelAndView;
+    }
+
+    @GetMapping("/contact")
+    public ModelAndView getContact(){
+        ModelAndView modelAndView = new ModelAndView("contact");
+        return modelAndView;
+    }
+
 }

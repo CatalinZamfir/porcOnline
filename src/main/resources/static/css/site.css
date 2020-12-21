@@ -1,8 +1,7 @@
 
 body{
-    background-image: url("https://porc.netcdn.ro/media/mageing/slider/slideritem/l/a/landing_11122020.jpg");
-    background-size: 2800px 1400px;
-    background-repeat: no-repeat;
+    background-color: white;
+    background-image: none;
 }
 .topnav {
     background-color: white;
@@ -75,9 +74,16 @@ body{
     background-color: #dddd;
 }
 
-.magazin1{
-    text-align: center;
+.mag-right{
+    float: left;
+    width: 45%;
+    padding: 0 100px;
+}
 
+.mag-left{
+    float: left;
+    width: 45%;
+    margin-left: 20px;
 }
 
 

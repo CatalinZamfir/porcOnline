@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "authority")
+@Table(name = "authorities")
 public class AuthorityEntity {
 
     @Id
@@ -14,9 +14,17 @@ public class AuthorityEntity {
     @ManyToOne
     @JoinColumn(name = "userId")
     private UserEntity user;
+    private String username;
 
+    public String getUsername() {
+        return username;
+    }
 
-//    @OneToMany(mappedBy = "authority")
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    //    @OneToMany(mappedBy = "authority")
 //    private List<UserEntity> users;
 
     public Integer getAuthorityId() {

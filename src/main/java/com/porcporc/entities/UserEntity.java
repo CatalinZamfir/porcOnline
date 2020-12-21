@@ -26,12 +26,21 @@ public class UserEntity {
     private List<OrderEntity> orders;
     @OneToMany(mappedBy = "user")
     private List<AuthorityEntity> authority;
+    private Boolean enabled;
 
 
 //    @ManyToOne
 //    @JoinColumn(name = "authorityId", insertable = false, updatable = false)
 //    private AuthorityEntity authority;
 
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public Integer getUserId() {
         return userId;
