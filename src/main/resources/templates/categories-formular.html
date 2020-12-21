@@ -24,8 +24,8 @@
 <!--          th:each="err,stat:${#fields.errors('DescriptionName')}"-->
 <!--          th:utext="!${stat.last}?${err} +'<br>' : ${err}">-->
 <!--    </span>-->
-    <label name="Description"> Description </label>
-    <input type="text" maxlength="80" name="Description" id="description" placeholder="category description">
+    <label name="image"> Image Url </label>
+    <input type="text" name="image" id="image" placeholder="image url" th:field="*{image}">
     </br>
     <input type="submit" value="Save">
 

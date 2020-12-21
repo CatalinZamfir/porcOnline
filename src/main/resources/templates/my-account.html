@@ -25,9 +25,12 @@
 <p>Crearea unui cont are multe beneficii: check out rapid, pastrarea mai multor adrese, urmarirea comenzilor si altele.
 </p>
 <br>
-<form method="post" action="/register">
-    <input type="button" value="CLIENT NOU">
-</form>
-
+<script>
+    function register() {
+        window.open("/register");
+    }
+</script>
+<button onclick="register()"> Register </button>
+<a th:href ="@{'/register'}">Cont nou</a>
 </body>
 </html>

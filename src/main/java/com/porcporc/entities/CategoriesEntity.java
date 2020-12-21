@@ -12,7 +12,7 @@ public class CategoriesEntity {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer categoriesId;
     private String name;
-    private String description;
+    private String image;
     @OneToMany(mappedBy = "categoriesEntity")
     private List<ProductsEntity> productsList;
 
@@ -32,12 +32,12 @@ public class CategoriesEntity {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getImage() {
+        return image;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public List<ProductsEntity> getProductsList() {

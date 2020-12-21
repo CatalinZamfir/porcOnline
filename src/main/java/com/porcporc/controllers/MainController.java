@@ -45,4 +45,9 @@ public class MainController {
         return modelAndView;
     }
 
+    @GetMapping("/client-nou")
+    public ModelAndView getNewClient(){
+        ModelAndView modelAndView = new ModelAndView("my-account");
+        return modelAndView;
+    }
 }

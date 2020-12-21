@@ -11,7 +11,8 @@
     <li th:each="categories : ${categoriesList}">
         <a th:text="${categories.getCategoriesId()}"></a>
         <a th:text="${categories.getName()}"></a>
-        <a th:text="${categories.getDescription()}"></a>
+<!--        <a th:text="${categories.getImage()}"></a>-->
+        <img th:src="${categories.getImage()}" width="300px">
 
         <a th:href="@{'/view-products/' + ${categories.getCategoriesId()}}" > View <a/>
             <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" > Delete <a/>
