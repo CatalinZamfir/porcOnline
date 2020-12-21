@@ -46,7 +46,7 @@ public class ProductsController {
     public ModelAndView addProducts (@PathVariable Integer categoriesId) {
         ModelAndView modelAndView = new ModelAndView("products-formular");
         ProductsEntity productsEntity = new ProductsEntity();
-        productsEntity.setProductsId(categoriesId);
+        productsEntity.setCategoriesId(categoriesId);
         modelAndView.addObject("products", productsEntity);
         return modelAndView;
     }
@@ -74,7 +74,7 @@ public class ProductsController {
     @GetMapping("/products/delete/{id}")
     public ModelAndView deleteProducts (@PathVariable Integer id){
         ProductsEntity productsEntity = productRepository.findById(id).get();
-        ModelAndView modelAndView = new ModelAndView("redirect:/view-products/"+ productsEntity.getProductsId());
+        ModelAndView modelAndView = new ModelAndView("redirect:/view-products/"+ productsEntity.getCategoriesId());
         productRepository.delete(productsEntity);
         return modelAndView;
     }
