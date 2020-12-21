@@ -39,4 +39,10 @@ public class MainController {
         return modelAndView;
     }
 
+    @GetMapping("/my-account")
+    public ModelAndView getMyAccount(){
+        ModelAndView modelAndView = new ModelAndView("my-account");
+        return modelAndView;
+    }
+
 }

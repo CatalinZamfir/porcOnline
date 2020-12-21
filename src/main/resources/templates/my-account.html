@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<h3>CLIENT INREGISTRAT</h3>
+<hr>
+<p>Daca aveti un cont creat, conectati-va cu adresa de email.</p>
+<form method="post" action="/login-submit">
+
+    <input type="text" id ="username" name="username" placeholder="Username">
+    <br>
+    <br>
+    <input type="password" id="password" name="password" placeholder="Password">
+    <br>
+    <br>
+    <input type="submit" value="Login">
+</form>
+<br>
+<h3>CLIENT NOU</h3>
+<hr>
+<p>Crearea unui cont are multe beneficii: check out rapid, pastrarea mai multor adrese, urmarirea comenzilor si altele.
+</p>
+<br>
+<form method="post" action="/register">
+    <input type="button" value="CLIENT NOU">
+</form>
+
+</body>
+</html>
