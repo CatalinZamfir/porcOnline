@@ -86,4 +86,14 @@ body{
     margin-left: 20px;
 }
 
+.contact-image{
+    float: left;
+    width: 60%;
+    height: 60%;
+    margin-left: 20px;
+}
+
+.contact-details{
+    float: left;
+}
 
