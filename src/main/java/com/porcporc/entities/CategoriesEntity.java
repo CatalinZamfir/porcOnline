@@ -13,7 +13,7 @@ public class CategoriesEntity {
     private Integer categoriesId;
     private String name;
     private String description;
-    @OneToMany(mappedBy = "products")
+    @OneToMany(mappedBy = "categoriesEntity")
     private List<ProductsEntity> productsList;
 
     public Integer getCategoriesId() {

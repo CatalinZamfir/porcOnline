@@ -17,7 +17,7 @@
         <td th:text = "${prod.getImage()}"></td>
         <td th:text = "${prod.getCreateDate()}"></td>
         <td th:text = "${prod.getStockProduct()}"></td>
-        <td th:text = "${prod.getProducts()}"></td>
+        <td th:text = "${prod.getCategoriesId()}"></td>
         <td th:text = "${prod.getProductOrder()}"></td>
         <td>
             <a th:href ="@{'/products/edit/' + ${prod.getProductsId()}}" >Edit</a>

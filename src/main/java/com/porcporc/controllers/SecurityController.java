@@ -1,10 +1,14 @@
 package com.porcporc.controllers;
 
+import com.porcporc.entities.AuthorityEntity;
 import com.porcporc.entities.UserEntity;
+import com.porcporc.repository.AuthorityRepository;
+import com.porcporc.repository.CategoriesRepository;
 import com.porcporc.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -26,10 +31,20 @@ public class SecurityController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private AuthorityRepository authorityRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private CategoriesRepository categoriesRepository;
+
 
     @GetMapping("/login")
     public ModelAndView getLogin() {
         ModelAndView modelAndView = new ModelAndView("login-form");
+        modelAndView.addObject("categoryList", categoriesRepository.findAll());
         return modelAndView;
 
     }
@@ -44,15 +59,29 @@ public class SecurityController {
     }
 
     @PostMapping("/register")
-    public ModelAndView saveProducts (@Valid @ModelAttribute("register") UserEntity userEntity, BindingResult bindingResult) {
-
-        ModelAndView modelAndView = new ModelAndView("register");
-        if(bindingResult.hasErrors()) {
-            modelAndView.setViewName("register");
-            modelAndView.addObject("user", userEntity);
-            return modelAndView;
-        }
-        userRepository.save(userEntity);
+    public ModelAndView registerUserRequest(@Valid @ModelAttribute("user") UserEntity userEntity) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/login");
+//        if(bindingResult.hasErrors()){
+//            modelAndView.setViewName("register");
+//            modelAndView.addObject("user", userEntity);
+//            modelAndView.addObject("editMode", false);
+//            return modelAndView;
+//        }
+//        Optional<UserEntity> optionalUserEntity = userRepository.findById(userEntity.getUserId());
+//       if (optionalUserEntity.isPresent()) {
+//            UserEntity editedUserEntity = optionalUserEntity.get();
+//           editedUserEntity.setPassword(userEntity.getPassword());
+//           editedUserEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+//            userEntity = editedUserEntity;
+//        } else {
+//            userEntity.setEnabled(true);
+//            userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+//        }
+        userEntity = userRepository.save(userEntity);
+        AuthorityEntity authorityEntity = new AuthorityEntity();
+        authorityEntity.setUser(userEntity);
+        authorityEntity.setAuthority("USER");
+        authorityRepository.save(authorityEntity);
         return modelAndView;
     }
 

@@ -13,7 +13,6 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
-    private Integer authorityId;
     private String email;
     private String password;
     private String fullName;
@@ -25,9 +24,13 @@ public class UserEntity {
     private String phone;
     @OneToMany(mappedBy = "user")
     private List<OrderEntity> orders;
-    @ManyToOne
-    @JoinColumn(name = "authorityId", insertable = false, updatable = false)
-    private AuthorityEntity authority;
+    @OneToMany(mappedBy = "user")
+    private List<AuthorityEntity> authority;
+
+
+//    @ManyToOne
+//    @JoinColumn(name = "authorityId", insertable = false, updatable = false)
+//    private AuthorityEntity authority;
 
 
     public Integer getUserId() {
@@ -36,14 +39,6 @@ public class UserEntity {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Integer getAuthorityId() {
-        return authorityId;
-    }
-
-    public void setAuthorityId(Integer authorityId) {
-        this.authorityId = authorityId;
     }
 
     public String getEmail() {
@@ -118,13 +113,19 @@ public class UserEntity {
         this.orders = orders;
     }
 
-    public AuthorityEntity getAuthority() {
+//    public AuthorityEntity getAuthority() {
+//        return authority;
+//    }
+//    public void setAuthority(AuthorityEntity authority) {
+//        this.authority = authority;
+//    }
+
+
+    public List<AuthorityEntity> getAuthority() {
         return authority;
     }
 
-    public void setAuthority(AuthorityEntity authority) {
+    public void setAuthority(List<AuthorityEntity> authority) {
         this.authority = authority;
     }
-
-
 }

@@ -24,7 +24,7 @@ public class ProductsEntity {
     private Integer stockProduct;
     @ManyToOne
     @JoinColumn(name = "categoriesId",insertable = false, updatable = false)
-    private ProductsEntity products;
+    private CategoriesEntity categoriesEntity;
     private Integer categoriesId;
     @OneToOne(mappedBy = "products")
     private ProductOrderEntity productOrder;
@@ -104,12 +104,12 @@ public class ProductsEntity {
         this.stockProduct = stockProduct;
     }
 
-    public ProductsEntity getProducts() {
-        return products;
+    public CategoriesEntity getCategoriesEntity() {
+        return categoriesEntity;
     }
 
-    public void setProducts(ProductsEntity products) {
-        this.products = products;
+    public void setCategoriesEntity(CategoriesEntity categoriesEntity) {
+        this.categoriesEntity = categoriesEntity;
     }
 
     public ProductOrderEntity getProductOrder() {
@@ -119,5 +119,6 @@ public class ProductsEntity {
     public void setProductOrder(ProductOrderEntity productOrder) {
         this.productOrder = productOrder;
     }
+
 
 }

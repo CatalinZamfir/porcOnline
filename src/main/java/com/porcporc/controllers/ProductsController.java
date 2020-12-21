@@ -1,5 +1,6 @@
 package com.porcporc.controllers;
 
+import com.porcporc.entities.CategoriesEntity;
 import com.porcporc.entities.ProductsEntity;
 import com.porcporc.repository.CategoriesRepository;
 import com.porcporc.repository.ProductRepository;
@@ -50,17 +51,15 @@ public class ProductsController {
         return modelAndView;
     }
 
-
-
     @PostMapping("/products/save")
-    public ModelAndView saveProducts (@Valid @ModelAttribute ProductsEntity product, BindingResult bindingResult) {
+    public ModelAndView saveProducts (@Valid @ModelAttribute("products") ProductsEntity product,BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("redirect:/view-products/" + product.getCategoriesId());
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             modelAndView.setViewName("products-formular");
-            modelAndView.addObject("products", product);
+            modelAndView.addObject("product", product);
             return modelAndView;
         }
-       productRepository.save(product);
+        productRepository.save(product);
         return modelAndView;
     }
 
