@@ -20,7 +20,7 @@
         <td th:text = "${prod.getCategoriesId()}"></td>
         <td th:text = "${prod.getProductOrder()}"></td>
         <td>
-            <a th:href="@{'/products/buy/' + ${prod.getProductsId()}}">Buy</a>
+            <a th:href="@{'/add-orders/' + ${prod.getProductsId()}}">Buy</a>
             <a th:href ="@{'/products/edit/' + ${prod.getProductsId()}}" >Edit</a>
             <a th:href ="@{'/products/delete/' + ${prod.getProductsId()}}" >Delete</a>
         </td>

@@ -19,6 +19,15 @@ public class ProductOrderEntity {
     @OneToOne
     @JoinColumn(name = "productsId", insertable = false, updatable = false)
     private ProductsEntity products;
+    private Integer productsId;
+
+    public Integer getProductsId() {
+        return productsId;
+    }
+
+    public void setProductsId(Integer productsId) {
+        this.productsId = productsId;
+    }
 
     public Integer getProductOrderId() {
         return productOrderId;
