@@ -6,21 +6,48 @@
     <link type="text/css" rel="stylesheet" href="/css/site.css">
 </head>
 <body>
+<div id="menuNav" class="topnav">
+    <div class="menu">
+        <button class="menuElement">Menu</button>
+        <div class="menu-content">
+            <a href="/categories">PRODUSE</a>
+            <br>
+            <a href="/register">Contul meu</a>
+            <a href="/in-magazine">In magazine</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </div>
+
+    <a class="home" href="/">Home</a>
+    <a class="linkElement" href="#">Search</a>
+    <a class="linkElement" href="/orders">My Cart</a>
+    <a class="linkElement" href="/my-account">My Account</a>
+
+</div>
 
 <ul>
     <li th:each="categories : ${categoriesList}">
-        <a th:text="${categories.getCategoriesId()}"></a>
-        <a th:text="${categories.getName()}"></a>
-<!--        <a th:text="${categories.getImage()}"></a>-->
-        <img th:src="${categories.getImage()}" width="300px">
+        <div class="categories">
+            <div class="categoriesId">
+                <a th:text="${categories.getCategoriesId()}"></a>
+            </div>
+            <div class="categoriesName">
+                <a th:text="${categories.getName()}"></a>
+            </div>
+            <div class="categoriesImage">
+                <img th:src="${categories.getImage()}" width="300px">
+            </div>
 
-        <a th:href="@{'/view-products/' + ${categories.getCategoriesId()}}" > View <a/>
-            <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" > Delete <a/>
-                <a th:href="@{'/categories/edit/' + ${categories.getCategoriesId()}}" > Edit <a/>
+            <div class="buttonsCat">
+                <a th:href="@{'/view-products/' + ${categories.getCategoriesId()}}"> View <a/>
+                    <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}"> Delete <a/>
+                        <a th:href="@{'/categories/edit/' + ${categories.getCategoriesId()}}"> Edit <a/>
 
+            </div>
     </li>
 </ul>
-<a href="categories/add" > Add Categories</a>
-
+<div class="addCategories">
+    <a href="categories/add"> Add Categories</a>
+</div>
 </body>
 </html>
