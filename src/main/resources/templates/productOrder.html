@@ -26,20 +26,20 @@
 </div>
 <h2>Order List</h2>
 
-<!--<form method="post" action="/orders" th:object="${orderList}">-->
-<!--<table>-->
-<!--    <tr>-->
-<!--        <th>Nume produs</th>-->
-<!--        <th>Pret</th>-->
-<!--        <th>Cantitate</th>-->
+<form method="post" action="/orders" th:object="${orderList}">
+<table>
+    <tr>
+        <th>Nume produs</th>
+        <th>Pret</th>
+        <th>Cantitate</th>
 
-<!--    </tr>-->
-<!--    <tr th:each="cat : ${orderList}">-->
-<!--        <td th:text="${cat.getProducts().name}"></td>-->
-<!--        <td th:text="${cat.getPrice()}"></td>-->
-<!--        <td th:text="${cat.getQuantity()}"></td>-->
+    </tr>
+    <tr th:each="cat : ${orderList}">
+        <td th:text="${cat.getProducts().name}"></td>
+        <td th:text="${cat.getPrice()}"></td>
+        <td th:text="${cat.getQuantity()}"></td>
 
-<!--    </tr>-->
+    </tr>
 
 
 </table>

@@ -25,37 +25,42 @@ public class ProductOrderController {
     @Autowired
     private ProductRepository productRepository;
 
-//    @GetMapping("/orders")
-//    public ModelAndView checkOrders() {
-//        ModelAndView modelAndView = new ModelAndView("productOrder");
-//        modelAndView.addObject("orderList", productOrderRepository.findAll());
-//        return modelAndView;
-//    }
-//
-//    @GetMapping("/view-orders/{id}")
-//    public ModelAndView getOrder(@PathVariable Integer id) {
-//        ModelAndView modelAndView = new ModelAndView("productOrder");
-//        modelAndView.addObject("orderList", productOrderRepository.findById(id).get());
-//        return modelAndView;
-//
-//    }
-//
-//@GetMapping("/add-orders/{productId}")
-//public ModelAndView addOrder (@PathVariable Integer productId) {
-//    ModelAndView modelAndView = new ModelAndView();
-//    ProductOrderEntity productOrderEntity = new ProductOrderEntity();
-//    productOrderEntity.setProductsId(productId);
-//    productOrderEntity.setQuantity(1);
-//    modelAndView.addObject("productOrder", productOrderEntity);
-//    return modelAndView;
-//}
-//
-//    @PostMapping("orders/save")
-//    public ModelAndView saveOrders (@ModelAttribute ProductOrderEntity productOrderEntity){
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("productOrder",productOrderEntity);
-//        productOrderRepository.save(productOrderEntity);
-//        return modelAndView;
-//    }
+
+
+
+
+
+    @GetMapping("/orders")
+    public ModelAndView checkOrders() {
+        ModelAndView modelAndView = new ModelAndView("productOrder");
+        modelAndView.addObject("orderList", productOrderRepository.findAll());
+        return modelAndView;
+    }
+
+    @GetMapping("/view-orders/{id}")
+    public ModelAndView getOrder(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("productOrder");
+        modelAndView.addObject("orderList", productOrderRepository.findById(id).get());
+        return modelAndView;
+
+    }
+
+@GetMapping("/add-orders/{productId}")
+public ModelAndView addOrder (@PathVariable Integer productId) {
+    ModelAndView modelAndView = new ModelAndView();
+    ProductOrderEntity productOrderEntity = new ProductOrderEntity();
+    productOrderEntity.setProductsId(productId);
+    productOrderEntity.setQuantity(1);
+    modelAndView.addObject("productOrder", productOrderEntity);
+    return modelAndView;
+}
+
+    @PostMapping("orders/save")
+    public ModelAndView saveOrders (@ModelAttribute ProductOrderEntity productOrderEntity){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("productOrder",productOrderEntity);
+        productOrderRepository.save(productOrderEntity);
+        return modelAndView;
+    }
 
 }

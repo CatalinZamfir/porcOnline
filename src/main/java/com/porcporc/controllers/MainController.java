@@ -55,4 +55,10 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView("livrare-retur");
         return modelAndView;
     }
+
+    @GetMapping("/search")
+    public ModelAndView getSearch(){
+        ModelAndView modelAndView = new ModelAndView("search");
+        return modelAndView;
+    }
 }
