@@ -26,7 +26,7 @@ public class UserEntity {
     private List<OrderEntity> orders;
     @OneToMany(mappedBy = "user")
     private List<AuthorityEntity> authority;
-    private Boolean enabled;
+    private Boolean enabled = true;
 
 
 //    @ManyToOne

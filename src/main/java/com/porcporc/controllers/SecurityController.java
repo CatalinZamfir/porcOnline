@@ -58,34 +58,34 @@ public class SecurityController {
         return modelAndView;
     }
 
+
     @PostMapping("/register")
-    public ModelAndView registerUserRequest(@Valid @ModelAttribute("user") UserEntity userEntity) {
+    public ModelAndView registerUserRequest( @ModelAttribute("user") UserEntity userEntity) {
         ModelAndView modelAndView = new ModelAndView("redirect:/login");
 //        if(bindingResult.hasErrors()){
 //            modelAndView.setViewName("register");
 //            modelAndView.addObject("user", userEntity);
-//            modelAndView.addObject("editMode", false);
+//            modelAndView.addObject("editMode",  false);
 //            return modelAndView;
 //        }
 //        Optional<UserEntity> optionalUserEntity = userRepository.findById(userEntity.getUserId());
-//       if (optionalUserEntity.isPresent()) {
+//        if (optionalUserEntity.isPresent()) {
 //            UserEntity editedUserEntity = optionalUserEntity.get();
-//           editedUserEntity.setPassword(userEntity.getPassword());
-//           editedUserEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+//            editedUserEntity.setPassword(userEntity.getPassword());
+////            editedUserEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
 //            userEntity = editedUserEntity;
 //        } else {
-//            userEntity.setEnabled(true);
-//            userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+        userEntity.setEnabled(true);
+//            userEntity.setPassword(userEntity.getPassword());
+        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
 //        }
         userEntity = userRepository.save(userEntity);
-        AuthorityEntity authorityEntity = new AuthorityEntity();
-        authorityEntity.setUser(userEntity);
-        authorityEntity.setAuthority("USER");
-        authorityRepository.save(authorityEntity);
+            AuthorityEntity authorityEntity = new AuthorityEntity();
+            authorityEntity.setUser(userEntity);
+            authorityEntity.setUsername(userEntity.getUsername());
+            authorityEntity.setAuthority("USER");
+            authorityRepository.save(authorityEntity);
         return modelAndView;
     }
-
-
-
 
 }
