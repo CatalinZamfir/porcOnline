@@ -8,7 +8,10 @@ import com.porcporc.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +54,6 @@ public class SecurityController {
 
     }
 
-
     @GetMapping("/register")
     public ModelAndView registerUser() {
         ModelAndView modelAndView = new ModelAndView("register");
@@ -57,7 +61,6 @@ public class SecurityController {
         modelAndView.addObject("editMode", false);
         return modelAndView;
     }
-
 
     @PostMapping("/register")
     public ModelAndView registerUserRequest( @ModelAttribute("user") UserEntity userEntity) {
@@ -85,6 +88,21 @@ public class SecurityController {
             authorityEntity.setUsername(userEntity.getUsername());
             authorityEntity.setAuthority("USER");
             authorityRepository.save(authorityEntity);
+        return modelAndView;
+    }
+
+    @GetMapping("/login-error")
+    public ModelAndView loginError(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        ModelAndView modelAndView = new ModelAndView("login-form");
+        String errorMessage = null;
+        if (session != null) {
+            Object object = session.getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+            if (object instanceof AuthenticationException) {
+                errorMessage = "Wrong username or password";
+            }
+        }
+        modelAndView.addObject("errorMessage", errorMessage);
         return modelAndView;
     }
 
