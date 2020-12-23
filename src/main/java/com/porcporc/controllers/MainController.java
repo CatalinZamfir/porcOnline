@@ -50,4 +50,9 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView("my-account");
         return modelAndView;
     }
+    @GetMapping("/livrare-retur")
+    public ModelAndView getLivrareRetur(){
+        ModelAndView modelAndView = new ModelAndView("livrare-retur");
+        return modelAndView;
+    }
 }

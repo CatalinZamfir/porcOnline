@@ -12,7 +12,7 @@
         <div class="menu-content">
             <a href="/categories">PRODUSE</a>
             <br>
-            <a href="/register">Contul meu</a>
+            <a href="/livrare-retur">Livrare/Retur</a>
             <a href="/in-magazine">In magazine</a>
             <a href="/contact">Contact</a>
         </div>
@@ -29,25 +29,25 @@
     <li th:each="categories : ${categoriesList}">
         <div class="categories">
             <div class="categoriesId">
-                <a th:text="${categories.getCategoriesId()}"></a>
+                <a th:text="${categories.getCategoriesId()}" ></a>
             </div>
             <div class="categoriesName">
-                <a th:text="${categories.getName()}"></a>
+                <a th:text="${categories.getName()}" ></a>
             </div>
             <div class="categoriesImage">
                 <img th:src="${categories.getImage()}" width="300px">
             </div>
 
             <div class="buttonsCat">
-                <a th:href="@{'/view-products/' + ${categories.getCategoriesId()}}"> View <a/>
-                    <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}"> Delete <a/>
-                        <a th:href="@{'/categories/edit/' + ${categories.getCategoriesId()}}"> Edit <a/>
+                <a th:href="@{'/view-products/' + ${categories.getCategoriesId()}}" class="button1"> View <a/>
+                    <a th:href="@{'/categories/delete/' + ${categories.getCategoriesId()}}" class="button1"> Delete <a/>
+                        <a th:href="@{'/categories/edit/' + ${categories.getCategoriesId()}}" class="button1"> Edit <a/>
 
             </div>
     </li>
 </ul>
 <div class="addCategories">
-    <a href="categories/add"> Add Categories</a>
+    <a href="categories/add" class="button1"> Add Categories</a>
 </div>
 </body>
 </html>

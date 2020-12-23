@@ -6,27 +6,85 @@
     <link type="text/css" rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-<h2 th:text="${categories.getName()}"></h2>
-<table>
-    <tr th:each = "prod : ${categories.getProductsList()} ">
-        <td th:text = "${prod.getProductsId()}"></td>
-        <td th:text = "${prod.getName()}"></td>
-        <td th:text = "${prod.getSku()}"></td>
-        <td th:text = "${prod.getPrice()}"></td>
-        <td th:text = "${prod.getDescription()}"></td>
-        <img th:src="${prod.getImage()}" width="300px">
-        <td th:text = "${prod.getCreateDate()}"></td>
-        <td th:text = "${prod.getStockProduct()}"></td>
-        <td th:text = "${prod.getCategoriesId()}"></td>
-        <td th:text = "${prod.getProductOrder()}"></td>
-        <td>
-            <a th:href="@{'/add-orders/' + ${prod.getProductsId()}}">Buy</a>
-            <a th:href ="@{'/products/edit/' + ${prod.getProductsId()}}" >Edit</a>
-            <a th:href ="@{'/products/delete/' + ${prod.getProductsId()}}" >Delete</a>
-        </td>
+<div id="menuNav" class="topnav">
+    <div class="menu">
+        <button class="menuElement">Menu</button>
+        <div class="menu-content">
+            <a href="/categories">PRODUSE</a>
+            <br>
+            <a href="/livrare-retur">Livrare/Retur</a>
+            <a href="/in-magazine">In magazine</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </div>
 
-    </tr>
-</table>
-<a th:href ="@{'/products/add/'+ ${categories.getCategoriesId()}}" >Add product</a>
+    <a class="home" href="/">Home</a>
+    <a class="linkElement" href="#">Search</a>
+    <a class="linkElement" href="/orders">My Cart</a>
+    <a class="linkElement" href="/my-account">My Account</a>
+
+</div>
+<div class="h2CategoriesName">
+    <h2 th:text="${categories.getName()}"></h2>
+</div>
+<ul>
+    <li th:each="prod : ${categories.getProductsList()} ">
+        <div class="products">
+            <div class="productsId">
+                <a th:text="${prod.getProductsId()}"></a>
+            </div>
+            <div class="productsName">
+                <a th:text="${prod.getName()}"></a>
+            </div>
+            <br>
+            <hr>
+            <br>
+
+            <div class="productsImage">
+                <img th:src="${prod.getImage()}" width="500px">
+            </div>
+            <div class="productsRight">
+                <div class="productsSku">
+                    <h4>SKU: </h4>
+                    <a th:text="${prod.getSku()}"></a>
+                </div>
+                <div class="productsPrice">
+                    <h4>PRICE: </h4>
+                    <a th:text="${prod.getPrice()}"></a>
+                </div>
+                <div class="productsDescription">
+                    <h4>DESCRIPTION: </h4>
+                    <a th:text="${prod.getDescription()}"></a>
+                </div>
+                <br>
+                <a href="/livrare-retur" class="button1">Livrare/Retur</a>
+                <div class="productsDetailsRight">
+                    <div class="productsDate">
+                        <h4>ADDINTION DATE: </h4>
+                        <a th:text="${prod.getCreateDate()}"></a>
+                    </div>
+                    <div class="productsStock">
+                        <h4>STOCK: </h4>
+                        <a th:text="${prod.getStockProduct()}"></a>
+                    </div>
+                    <div class="productsCategoriesId">
+                        <a th:text="${prod.getCategoriesId()}"></a>
+                    </div>
+                    <div class="productsOrder">
+                        <a th:text="${prod.getProductOrder()}"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonsProd">
+                <a th:href="@{'/add-orders/' + ${prod.getProductsId()}}" class="button1">Buy</a>
+                <a th:href="@{'/products/edit/' + ${prod.getProductsId()}}" class="button1">Edit</a>
+                <a th:href="@{'/products/delete/' + ${prod.getProductsId()}}" class="button1">Delete</a>
+            </div>
+
+    </li>
+</ul>
+<div class="addProducts">
+    <a th:href="@{'/products/add/'+ ${categories.getCategoriesId()}}" class="button1">Add product</a>
+</div>
 </body>
 </html>
