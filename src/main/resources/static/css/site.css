@@ -5,6 +5,7 @@
 body{
     background-color: white;
     background-image: none;
+    font-family: "Century Gothic";
 }
 .topnav {
     background-color: white;
@@ -117,6 +118,7 @@ li{
 }
 .categoriesName{
     margin-left: 120px;
+    font-weight: bold;
 }
 .buttonsCat{
     padding: 15px;
@@ -202,7 +204,7 @@ footer{
     background: black;
     color: white;
     margin-top: 30px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 .footer_inner{
     padding: 20px 0;
