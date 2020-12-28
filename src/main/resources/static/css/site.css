@@ -252,6 +252,7 @@ footer{
 }
 .footer_content.flex-column{
     flex-direction: column;
+    margin-left: 550px;
 }
 .footer_content.bottom-align{
     vertical-align: bottom;
