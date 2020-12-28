@@ -61,4 +61,19 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView("search");
         return modelAndView;
     }
+    @GetMapping("/despre")
+    public ModelAndView getAbout(){
+        ModelAndView modelAndView = new ModelAndView("despre");
+        return modelAndView;
+    }
+    @GetMapping("/cum-comand")
+    public ModelAndView getHowOrder(){
+        ModelAndView modelAndView = new ModelAndView("cum-comand");
+        return modelAndView;
+    }
+    @GetMapping("/termeni-conditii")
+    public ModelAndView getConditions(){
+        ModelAndView modelAndView = new ModelAndView("termeni-conditii");
+        return modelAndView;
+    }
 }
