@@ -58,7 +58,7 @@
                     <a th:text="${prod.getDescription()}"></a>
                 </div>
                 <br>
-                <a href="/livrare-retur" class="button1">Livrare/Retur</a>
+                <a href="/livrare-retur" class="button1"><i class="fas fa-truck"></i>  Livrare/Retur</a>
                 <div class="productsDetailsRight">
                     <div class="productsDate">
                         <h4>ADDINTION DATE: </h4>
@@ -77,9 +77,9 @@
                 </div>
             </div>
             <div class="buttonsProd">
-                <a th:href="@{'/add-orders/' + ${prod.getProductsId()}}" class="button1">Buy</a>
-                <a th:href="@{'/products/edit/' + ${prod.getProductsId()}}" class="button1">Edit</a>
-                <a th:href="@{'/products/delete/' + ${prod.getProductsId()}}" class="button1">Delete</a>
+                <a th:href="@{'/add-orders/' + ${prod.getProductsId()}}" class="button1"><i class="fas fa-shopping-basket"></i>  Buy</a>
+                <a th:href="@{'/products/edit/' + ${prod.getProductsId()}}" class="button1"><i class="far fa-edit"></i>  Edit</a>
+                <a th:href="@{'/products/delete/' + ${prod.getProductsId()}}" class="button1"><i class="fas fa-trash"></i>  Delete</a>
             </div>
 
     </li>
