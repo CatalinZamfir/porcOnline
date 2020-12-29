@@ -28,8 +28,6 @@ public class ProductOrderController {
 
 
 
-
-
     @GetMapping("/orders")
     public ModelAndView checkOrders() {
         ModelAndView modelAndView = new ModelAndView("productOrder");
@@ -37,7 +35,7 @@ public class ProductOrderController {
         return modelAndView;
     }
 
-    @GetMapping("/view-orders/{id}")
+    @GetMapping("/orders/{id}")
     public ModelAndView getOrder(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("productOrder");
         modelAndView.addObject("orderList", productOrderRepository.findById(id).get());
@@ -47,20 +45,17 @@ public class ProductOrderController {
 
 @GetMapping("/add-orders/{productId}")
 public ModelAndView addOrder (@PathVariable Integer productId) {
-    ModelAndView modelAndView = new ModelAndView();
+    double x = productRepository.findById(productId).get().getPrice();
+    ModelAndView modelAndView = new ModelAndView("redirect:/orders");
     ProductOrderEntity productOrderEntity = new ProductOrderEntity();
     productOrderEntity.setProductsId(productId);
     productOrderEntity.setQuantity(1);
+    productOrderEntity.setPrice(x);
     modelAndView.addObject("productOrder", productOrderEntity);
+    productOrderRepository.save(productOrderEntity);
     return modelAndView;
 }
 
-    @PostMapping("orders/save")
-    public ModelAndView saveOrders (@ModelAttribute ProductOrderEntity productOrderEntity){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("productOrder",productOrderEntity);
-        productOrderRepository.save(productOrderEntity);
-        return modelAndView;
-    }
+
 
 }

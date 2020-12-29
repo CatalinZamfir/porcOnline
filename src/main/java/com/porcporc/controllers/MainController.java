@@ -76,4 +76,5 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView("termeni-conditii");
         return modelAndView;
     }
+
 }
