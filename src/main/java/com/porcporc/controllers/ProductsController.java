@@ -60,9 +60,9 @@ public class ProductsController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("products-formular");
             modelAndView.addObject("product", product);
-            return modelAndView;
+        }else{
+            productRepository.save(product);
         }
-        productRepository.save(product);
         return modelAndView;
     }
 

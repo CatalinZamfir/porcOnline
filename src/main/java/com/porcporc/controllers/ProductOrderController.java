@@ -1,5 +1,6 @@
 package com.porcporc.controllers;
 
+import com.porcporc.entities.OrderEntity;
 import com.porcporc.entities.ProductOrderEntity;
 import com.porcporc.entities.ProductsEntity;
 import com.porcporc.repository.ProductOrderRepository;
@@ -43,8 +44,8 @@ public class ProductOrderController {
 
     }
 
-@GetMapping("/add-orders/{productId}")
-public ModelAndView addOrder (@PathVariable Integer productId) {
+    @GetMapping("/add-orders/{productId}")
+    public ModelAndView addOrder (@PathVariable Integer productId) {
     double x = productRepository.findById(productId).get().getPrice();
     ModelAndView modelAndView = new ModelAndView("redirect:/orders");
     ProductOrderEntity productOrderEntity = new ProductOrderEntity();
@@ -54,8 +55,13 @@ public ModelAndView addOrder (@PathVariable Integer productId) {
     modelAndView.addObject("productOrder", productOrderEntity);
     productOrderRepository.save(productOrderEntity);
     return modelAndView;
-}
+    }
 
-
+    @GetMapping("/orders-delete/{id}")
+    public ModelAndView deleteOrder (@PathVariable(value = "id") Integer id){
+        ModelAndView modelAndView = new ModelAndView("redirect:/orders");
+        productOrderRepository.deleteById(id);
+        return modelAndView;
+    }
 
 }

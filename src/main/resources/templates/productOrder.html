@@ -25,27 +25,33 @@
     <a class="linkElement" href="/my-account"><i class="fas fa-user-circle"></i></a>
 
 </div>
-<h2>Order List</h2>
+<h2 style="text-align: center">Order List</h2>
 
 <form method="post" action="/orders" th:object="${orderList}">
-<table>
+    <div class="order-table">
+<table style="width:80% ; line-height: 2cm">
     <tr>
         <th>Nume produs</th>
         <th>Pret</th>
         <th>Cantitate</th>
+        <th></th>
 
     </tr>
-    <tr th:each="cat : ${orderList}">
+    <tr th:each="cat : ${orderList}" style="text-align: center">
         <td th:text="${cat.getProducts().name}"></td>
         <td th:text="${cat.getPrice()}"></td>
         <td th:text="${cat.getQuantity()}"></td>
-
+        <td><a th:href="@{'/orders-delete/'+ ${cat.getProductOrderId()}}" class="button1"></a><i class="fas fa-trash"></i> Delete <a/></td>
     </tr>
+    </div>
 
 
 </table>
-
 </form>
+<br><br><br>
+<div class="finishOrder" style="margin-left: 1220px">
+    <a th:href="@{'/order/'+ ${orderList}}" class="button1"> Buy Now </a>
+</div>
 
 </body>
 </html>
