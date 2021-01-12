@@ -57,10 +57,11 @@ public class ProductOrderController {
     return modelAndView;
     }
 
-    @GetMapping("/orders-delete/{id}")
-    public ModelAndView deleteOrder (@PathVariable(value = "id") Integer id){
+    @GetMapping("/orders/delete/{id}")
+    public ModelAndView deleteOrder (@PathVariable Integer id){
+        ProductOrderEntity productOrderEntity = productOrderRepository.findById(id).get();
         ModelAndView modelAndView = new ModelAndView("redirect:/orders");
-        productOrderRepository.deleteById(id);
+        productOrderRepository.delete(productOrderEntity);
         return modelAndView;
     }
 

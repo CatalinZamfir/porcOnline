@@ -29,7 +29,7 @@
 <h1> Product Formular</h1>
 
 <form method="post" action="/products/save" th:object="${products}">
-
+    <input type="hidden" name="productId" th:field="*{productsId}">
     <br>
     <input type="hidden" name="categoryId" th:field="*{categoriesId}">
     <br>

@@ -41,7 +41,7 @@
         <td th:text="${cat.getProducts().name}"></td>
         <td th:text="${cat.getPrice()}"></td>
         <td th:text="${cat.getQuantity()}"></td>
-        <td><a th:href="@{'/orders-delete/'+ ${cat.getProductOrderId()}}" class="button1"></a><i class="fas fa-trash"></i> Delete <a/></td>
+        <td><a th:href="@{'/orders/delete/'+ ${cat.getProductOrderId()}}"> Delete <a/></td>
     </tr>
     </div>
 
