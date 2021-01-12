@@ -61,7 +61,7 @@ public class ProductOrderController {
     public ModelAndView deleteOrder (@PathVariable Integer id){
         ProductOrderEntity productOrderEntity = productOrderRepository.findById(id).get();
         ModelAndView modelAndView = new ModelAndView("redirect:/orders");
-        productOrderRepository.delete(productOrderEntity);
+        productOrderRepository.deleteById(productOrderEntity.getProductOrderId());
         return modelAndView;
     }
 

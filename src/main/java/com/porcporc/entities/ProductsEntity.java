@@ -26,7 +26,7 @@ public class ProductsEntity {
     @JoinColumn(name = "categoriesId",insertable = false, updatable = false)
     private CategoriesEntity categoriesEntity;
     private Integer categoriesId;
-    @OneToOne(mappedBy = "products", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "products")
     private ProductOrderEntity productOrder;
 
     public ProductsEntity() {

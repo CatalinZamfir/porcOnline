@@ -91,7 +91,7 @@ public class SecurityController {
         HttpSession session = request.getSession();
         ModelAndView modelAndView = new ModelAndView("login-form");
         String errorMessage = null;
-        if (session != null) {
+        if (session == null) {
             Object object = session.getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
             if (object instanceof AuthenticationException) {
                 errorMessage = "Wrong username or password";
