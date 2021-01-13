@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -61,6 +61,9 @@
     </style>
 </head>
 <body>
+<div th:if="${errorMessage}">
+    <span th:text="${errorMessage}"></span>
+</div>
 <form method="post" action="/login-submit">
     <h1>Login Form</h1>
     <div class="formcontainer">
@@ -78,6 +81,7 @@
             </label>
             <span class="psw"><a href="/register"> Register</a></span>
         </div>
+    </div>
 </form>
 </body>
 </html>

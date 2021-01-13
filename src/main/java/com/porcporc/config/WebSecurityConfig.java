@@ -24,11 +24,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/**","/login", "/register", "/editUser/*","/api/**", "/css/**")
+                .antMatchers("/login", "/register", "/editUser/*","/api/**", "/css/**")
                 .permitAll();
         http.authorizeRequests()
-                .antMatchers("/view-products/**");
- //             .hasRole("ADMIN");
+                .antMatchers("/**");
+//                .hasRole("ADMIN");
         http.authorizeRequests()
                 .anyRequest()
                 .authenticated();
@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication()
-                .dataSource(this.dataSource).passwordEncoder(passwordEncoder());
+                .dataSource(dataSource).passwordEncoder(passwordEncoder());
 
 
     }
