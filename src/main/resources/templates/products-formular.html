@@ -5,6 +5,117 @@
     <title>Add Product</title>
     <link type="text/css" rel="stylesheet" href="/css/site.css">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+        html, body {
+            min-height: 100%;
+        }
+        body, div, form, input, select, textarea, p {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #666;
+            line-height: 22px;
+        }
+        h1 {
+            /*position: absolute;*/
+            margin: 20px;
+            font-size: 38px;
+            color: #000000;
+            z-index: 2;
+            text-align: center;
+        }
+
+        form {
+            /*width: 100%;*/
+            padding: 20px 800px;
+            border-radius: 6px;
+            background: #fff;
+            /*box-shadow: 0 0 25px 0 #892e9b;*/
+        }
+
+        input, select, textarea {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input {
+            width: calc(100% - 10px);
+            padding: 5px;
+        }
+        input[type="date"] {
+            padding: 4px 5px;
+        }
+        select {
+            width: 100%;
+            padding: 7px 0;
+            background: transparent;
+        }
+        textarea {
+            width: calc(100% - 12px);
+            padding: 5px;
+        }
+        .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+            color: #3f95be;
+        }
+        .item input:hover, .item select:hover, .item textarea:hover {
+            border: 1px solid transparent;
+            box-shadow: 0 0 6px 0 #3f95be;
+            color: #3f95be;
+        }
+        .item {
+            position: relative;
+            margin: 10px 0;
+        }
+        input[type="date"]::-webkit-inner-spin-button {
+            display: none;
+        }
+        .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+            position: absolute;
+            font-size: 20px;
+            color: #a9a9a9;
+        }
+        .item i {
+            right: 2%;
+            top: 30px;
+            z-index: 1;
+        }
+        [type="date"]::-webkit-calendar-picker-indicator {
+            right: 1%;
+            z-index: 2;
+            opacity: 0;
+            cursor: pointer;
+        }
+        input[type=radio], input[type=checkbox]  {
+            display: none;
+        }
+
+        .question span {
+            margin-left: 30px;
+        }
+
+        input[type=radio]:checked + label:after {
+            opacity: 1;
+        }
+        .btn-block {
+            margin-top: 10px;
+            text-align: center;
+        }
+        button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #3f95be;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
 <div id="menuNav" class="topnav">
@@ -26,55 +137,88 @@
 
 </div>
 
-<h1> Product Formular</h1>
 
+<h1> Add Product</h1>
 <form method="post" action="/products/save" th:object="${products}">
     <input type="hidden" name="productId" th:field="*{productsId}">
     <br>
     <input type="hidden" name="categoryId" th:field="*{categoriesId}">
     <br>
-
-    <br>
-    <label for="name" > Name</label>
-    <input type="text" id="name" name="name" placeholder="Product name" th:field="*{name}">
-    <br>
-
-    <br>
-    <label for="sku" > SKU</label>
-    <input type="text" id="sku" name="sku" placeholder="SKU" th:field="*{sku}">
-    <br>
-
-    <br>
-    <label for="price" > Price</label>
-    <input type="number" placeholder="0.00" required name="price" id="price" min="0" value="0" step="0.01" title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+    <div class="item">
+        <p>Name</p>
+        <input type="text" id="name" name="name" placeholder="Product name" th:field="*{name}">
+    </div> <br>
+    <div class="item">
+        <p>SKU</p>
+        <div class="name-item">
+            <input type="text" id="sku" name="sku" placeholder="SKU" th:field="*{sku}">
+        </div>
+    </div> <br>
+    <div class="item">
+        <p>Date</p>
+        <input type="date" id="createDate" name="date" placeholder="date" th:field="*{createDate}">
+        <i class="fas fa-calendar-alt"></i>
+    </div><br>
+    <div class="item">
+        <p>Description</p>
+        <input type="text" id="description" name="description" placeholder="description" th:field="*{description}">
+    </div><br>
+    <div class="item">
+        <p>Price</p>
+        <input type="number" placeholder="0.00" required name="price" id="price" min="0" value="0" step="0.01" title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
 this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'
 "th:field="*{price}">
-    <br>
-
-    <br>
-    <label for="description" > Description</label>
-    <input type="text" id="description" name="description" placeholder="description" th:field="*{description}">
-    <br>
-
-    <br>
-    <label for="createDate" > Date</label>
-    <input type="date" id="createDate" name="date" placeholder="date" th:field="*{createDate}">
-    <br>
-
-    <br>
-    <label for="stockProduct" > Stock Product</label>
-    <input type="number" id="stockProduct" name="stockProduct" placeholder="stockProduct" th:field="*{stockProduct}">
-    <br>
-
-    <br>
-    <label for="image" > Image</label>
-    <input type="text" id="image" name="image" placeholder="image" th:field="*{image}">
-    <br>
-
-    <input type="submit" value="Submit" class="button1">
-
-
+    </div><br>
+    <div class="item">
+        <p>Stock Product</p>
+        <input type="number" id="stockProduct" name="stockProduct" placeholder="stockProduct" th:field="*{stockProduct}">
+    </div><br>
+    <div class="item">
+        <p>Image</p>
+        <input type="text" id="image" name="image" placeholder="image" th:field="*{image}">
+    </div><br>
+    <div class="btn-block">
+        <button type="submit" value="Submit"> Save </button>
+    </div>
 </form>
-
+</div><br>
+<footer class="footer-container" >
+    <div class="footer_inner">
+        <div class="footer_content top-align">
+            <img class="footer-logo" src="https://porc.netcdn.ro/static/frontend/Mageing/porc/ro_RO/images/PORC_2012_white.svg">
+        </div>
+        <div class="footer_content top-align">
+            <ul>
+                <li>
+                    <a href="/despre">Despre</a>
+                </li>
+                <li>
+                    <a href="/in-magazine">In magazine</a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/porcporc" target="_blank">Facebook</a>
+                </li>
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer_content top-align"><ul>
+            <li><a href="/cum-comand">Cum comand?</a></li>
+            <li><a href="/livrare-retur">Livrare &amp; retur</a></li>
+            <li><a href="mailto:comenzi@porcporc.com">Formular retur</a></li>
+            <li><a href="/termeni-conditii">Termeni si conditii</a></li>
+        </ul></div>
+        <div class="footer_content bottom-align flex-column">
+            <div class="payment_methods">
+                <img src="https://porc.netcdn.ro/static/frontend/Mageing/porc/ro_RO/images/visa-maestro-mobilpay.png" alt="Payment method by MobilPay">
+            </div>
+            <div class="footer_copy">
+	<span class="copy_notice">©2020 PORC | PORC A PORTER SRL | <a href="http://www.anpc.gov.ro/" target="_blank">ANPC</a> | <a href="https://webgate.ec.europa.eu/odr/main/index.cfm?event=main.home.show&amp;lng=RO" target="_blank">SOL</a> | Toate preturile sunt exprimate in LEI si contin TVA. <br>
+</span>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

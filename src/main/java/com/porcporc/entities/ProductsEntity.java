@@ -3,9 +3,7 @@ package com.porcporc.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -88,8 +86,8 @@ public class ProductsEntity {
         this.image = image;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateDate(){
+    return createDate;
     }
 
     public void setCreateDate(Date createDate) {

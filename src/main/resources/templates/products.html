@@ -62,7 +62,7 @@
                 <div class="productsDetailsRight">
                     <div class="productsDate">
                         <h4>ADDINTION DATE: </h4>
-                        <a th:text="${prod.getCreateDate()}"></a>
+                        <a th:text="${#dates.format(prod.getCreateDate(),'yyyy-MM-dd')}"></a>
                     </div>
                     <div class="productsStock">
                         <h4>STOCK: </h4>

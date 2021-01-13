@@ -1,11 +1,7 @@
 package com.porcporc.controllers;
 
-import com.porcporc.entities.CategoriesEntity;
-import com.porcporc.entities.OrderEntity;
-import com.porcporc.entities.ProductOrderEntity;
 import com.porcporc.entities.ProductsEntity;
 import com.porcporc.repository.CategoriesRepository;
-import com.porcporc.repository.ProductOrderRepository;
 import com.porcporc.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.validation.Valid;
-import java.util.Optional;
+
 
 @Controller
 public class ProductsController {
@@ -28,9 +23,6 @@ public class ProductsController {
 
     @Autowired
     private CategoriesRepository categoriesRepository;
-
-    @Autowired
-    private ProductOrderRepository productOrderRepository;
 
 
     public ProductsController(){
