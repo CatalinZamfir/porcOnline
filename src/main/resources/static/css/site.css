@@ -241,6 +241,7 @@ footer{
     height: auto;
     margin-left: 50px;
     text-align: left;
+    width: 150px;
 }
 .footer_content ul{
     display: block;
